@@ -14,23 +14,23 @@ public class Main {
     //Реализуйте метод, который получает в качестве параметра год,
     // проверяет, является ли он високосным, и выводит результат в консоль.
 
-    public static boolean checkYear(int year) {
-        boolean checkYear = false;
+    public static boolean isYearLeap(int year) {
+        boolean isYearLeap = false;
         if (year % 400 != 0 && (year % 4 != 0 || year % 100 == 0)) {
-            checkYear = false;
+            isYearLeap = false;
             System.out.println("" + year + "-й год HE является високосным.");
         } else {
-            checkYear = true;
+            isYearLeap = true;
             System.out.println("" + year + "-й год является високосным.");
         }
-        return checkYear;
+        return isYearLeap;
     }
 
     public static void task1() {
         System.out.println();
         System.out.println("Решение задачи №1 через метод:");
         int year = 2020;
-        checkYear(year);
+        isYearLeap(year);
     }
 
 
@@ -39,25 +39,31 @@ public class Main {
     //Если устройство старше текущего года,
     // предложите ему установить облегченную версию.
     public static void checkDeviseYear(int clientDeviceYear, int systemType) {
-        if (systemType == 1) {
-            if (clientDeviceYear < 2015) {
-                System.out.println("Установите облегченную версию для Android.");
-            } else {
-                System.out.println("Установите обычную версию для Android.");
-            }
-        } else if (clientDeviceYear < 2015) {
-            System.out.println("Установите облегченную версию для iOS.");
-        } else {
-            System.out.println("Установите обычную версию для iOS.");
-        }
+        int yearVersion = 2015;
+        if (systemType == 0 || systemType == 0) {
 
+            if (systemType == 1) {
+                if (clientDeviceYear < yearVersion) {
+                    System.out.println("Установите облегченную версию для Android.");
+                } else {
+                    System.out.println("Установите обычную версию для Android.");
+                }
+            } else if (clientDeviceYear < yearVersion) {
+                System.out.println("Установите облегченную версию для iOS.");
+            } else {
+                System.out.println("Установите обычную версию для iOS.");
+            }
+        } else {
+            System.out.println("Ошибка! Такая версия ОС не поддерживается.");
+        }
     }
+
 
     public static void task2() {
         System.out.println();
         System.out.println("Решение задачи №2 через метод:");
         int clientDeviceYear = 2018;
-        int systemType = 0;
+        int systemType = 2;
         checkDeviseYear(clientDeviceYear, systemType);
     }
 
@@ -66,22 +72,27 @@ public class Main {
     // который на вход принимает дистанцию и возвращает итоговое
     // количество дней доставки.
 
-    public static void checkDelivery(int deliveryDistance) {
+    public static int checkDelivery(int deliveryDistance) {
+        int deliveryDays;
         if (deliveryDistance < 20) {
-            System.out.println("Для доставки потребуется дней: 1.");
+            deliveryDays = 1;
         } else if (deliveryDistance < 60) {
-            System.out.println("Для доставки потребуется дней: 2.");
+            deliveryDays = 2;
         } else if (deliveryDistance < 100) {
-            System.out.println("Для доставки потребуется дней: 3.");
+            deliveryDays = 3;
         } else {
-            System.out.println("Доставки нет.");
+            deliveryDays = -1;
         }
+        return deliveryDays;
     }
+
     public static void task3() {
         System.out.println();
         System.out.println("Решение задачи №3 через метод:");
-        int deliveryDistance = 9;
+        int deliveryDistance = 59;
         checkDelivery(deliveryDistance);
+        int days = checkDelivery(deliveryDistance);
+        System.out.println("Для доставки потребуется дней: " + days);
     }
 
 }
