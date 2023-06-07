@@ -40,20 +40,25 @@ public class Main {
     // предложите ему установить облегченную версию.
     public static void checkDeviseYear(int clientDeviceYear, int systemType) {
         int yearVersion = 2015;
-        if (systemType == 0 || systemType == 0) {
+        int iOS = 0;
+        int android = 1;
+       // if (systemType == 1) {
 
-            if (systemType == 1) {
+            if (systemType == android) {
                 if (clientDeviceYear < yearVersion) {
                     System.out.println("Установите облегченную версию для Android.");
                 } else {
                     System.out.println("Установите обычную версию для Android.");
                 }
-            } else if (clientDeviceYear < yearVersion) {
+            }
+            //else
+            if (systemType == iOS) {
+                if (clientDeviceYear < yearVersion) {
                 System.out.println("Установите облегченную версию для iOS.");
             } else {
                 System.out.println("Установите обычную версию для iOS.");
             }
-        } else {
+        } if (systemType > android) {
             System.out.println("Ошибка! Такая версия ОС не поддерживается.");
         }
     }
@@ -62,8 +67,8 @@ public class Main {
     public static void task2() {
         System.out.println();
         System.out.println("Решение задачи №2 через метод:");
-        int clientDeviceYear = 2018;
-        int systemType = 2;
+        int clientDeviceYear = 2013;
+        int systemType = 1;
         checkDeviseYear(clientDeviceYear, systemType);
     }
 
